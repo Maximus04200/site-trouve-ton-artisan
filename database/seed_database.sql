@@ -13,7 +13,6 @@ ALTER TABLE categorie AUTO_INCREMENT = 1;
 
 
 -- INSERTION DES CATÉGORIES (4)
-
 INSERT INTO categorie (nom) VALUES
   ('Bâtiment'),
   ('Services'),
@@ -22,7 +21,6 @@ INSERT INTO categorie (nom) VALUES
 
 
 -- INSERTION DES SPÉCIALITÉS 
-
 INSERT INTO specialite (nom, id_categorie) VALUES
   -- Bâtiment (id_categorie = 1)
   ('Chauffagiste', 1),
