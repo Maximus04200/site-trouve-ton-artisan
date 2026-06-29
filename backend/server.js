@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 app.use('/api/categories', require('./routes/categories'));
 app.use('/api/specialites', require('./routes/specialites'));
 app.use('/api/artisans', require('./routes/artisans'));
-// app.use('/api/contact', require('./routes/contact'));
+app.use('/api/contact', require('./routes/contact'));
  
 
 app.use((req, res) => {
