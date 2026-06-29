@@ -1,0 +1,22 @@
+
+$tta-bleu-clair: #f1f8fc;   // fonds très clairs
+$tta-bleu-primaire: #0074c7; // bleu principal (boutons, liens actifs)
+$tta-bleu-fonce: #00497c;    // bleu foncé (hover, titres)
+$tta-gris-fonce: #384050;    // texte principal
+$tta-rouge: #cd2c2e;         // erreurs, alertes
+$tta-vert: #82b864;          // succès, validation
+
+
+$primary: $tta-bleu-primaire;
+$secondary: $tta-gris-fonce;
+$success: $tta-vert;
+$danger: $tta-rouge;
+$light: $tta-bleu-clair;
+$dark: $tta-gris-fonce;
+
+$font-family-base: 'Graphik', 'Helvetica Neue', Arial, sans-serif;
+
+$border-radius: 0.5rem;
+$border-radius-sm: 0.3rem;
+$border-radius-lg: 0.75rem;
+

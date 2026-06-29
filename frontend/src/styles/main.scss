@@ -1,0 +1,21 @@
+@use "./variables" as *;
+@use "../../node_modules/bootstrap/scss/bootstrap";
+
+html, body, #root {
+  min-height: 100vh;
+}
+
+body {
+  background-color: $tta-bleu-clair;
+  color: $tta-gris-fonce;
+  margin: 0;
+}
+
+.nav-link-custom {
+  color: $tta-gris-fonce;
+  text-decoration: none;
+
+  &:hover {
+    color: $tta-bleu-primaire;
+  }
+}
