@@ -45,6 +45,11 @@ app.get('/', (req, res) => {
   res.json({ message: "API Trouve ton artisan - en ligne !" });
 });
 
+// app.use('/api/categories', require('./routes/categories'));
+// app.use('/api/specialites', require('./routes/specialites'));
+app.use('/api/artisans', require('./routes/artisans'));
+// app.use('/api/contact', require('./routes/contact'));
+ 
 
 app.use((req, res) => {
   res.status(404).json({ erreur: 'Route non trouvée' });
