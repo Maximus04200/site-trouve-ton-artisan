@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getCategories } from '../services/api';
 
 function Header() {
-
+ 
   const [categories, setCategories] = useState([]);
   const [recherche, setRecherche] = useState('');
   const navigate = useNavigate();
@@ -14,17 +14,16 @@ function Header() {
     getCategories()
       .then((donnees) => setCategories(donnees))
       .catch((erreur) => console.error('Erreur chargement catégories :', erreur));
-  }, []); // [] = exécuté uniquement au montage du composant
+  }, []);
 
   function allerVersCategorie(nomCategorie) {
     navigate(`/artisans?categorie=${encodeURIComponent(nomCategorie)}`);
   }
 
- 
   function gererRecherche(e) {
     e.preventDefault(); 
 
-    if (recherche.trim() === '') return; // ignore une recherche vide
+    if (recherche.trim() === '') return; 
 
     navigate(`/artisans?q=${encodeURIComponent(recherche)}`);
   }

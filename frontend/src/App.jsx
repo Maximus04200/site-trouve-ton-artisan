@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Accueil from './pages/Accueil';
 import ListeArtisans from './pages/ListeArtisans';
 import FicheArtisan from './pages/FicheArtisan';
@@ -22,6 +23,8 @@ function App() {
         <Route path="/cookies" element={<PageLegale titre="Cookies" />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <Footer />
     </BrowserRouter>
   );
 }
