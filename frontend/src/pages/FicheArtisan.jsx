@@ -73,7 +73,7 @@ function FicheArtisan() {
       });
 
       setMessageSucces(reponse.message);
-      setFormulaire({ nom: '', email: '', objet: '', message: '' }); // vide le formulaire
+      setFormulaire({ nom: '', email: '', objet: '', message: '' });
 
     } catch (erreur) {
     

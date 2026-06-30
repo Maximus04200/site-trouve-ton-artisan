@@ -28,22 +28,16 @@ function Etoiles({ note }) {
 }
 
 function ListeArtisans() {
-  // searchParams = un objet qui lit les paramètres de l'URL
-  // (ce qui est après le "?", ex: ?categorie=Bâtiment&q=...)
+  
   const [searchParams] = useSearchParams();
-  const categorie = searchParams.get('categorie'); // null si absent de l'URL
+  const categorie = searchParams.get('categorie'); 
   const recherche = searchParams.get('q');
 
   const [artisans, setArtisans] = useState([]);
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
 
-  // -----------------------------------------------------
-  // Ce useEffect se redéclenche CHAQUE FOIS que `categorie`
-  // ou `recherche` change (présents dans le tableau de
-  // dépendances ci-dessous). C'est ce qui permet de changer
-  // de catégorie depuis le Header sans recharger la page.
-  // -----------------------------------------------------
+
   useEffect(() => {
     setChargement(true);
     setErreur(null);
@@ -66,11 +60,8 @@ function ListeArtisans() {
       })
       .finally(() => setChargement(false));
 
-  }, [categorie, recherche]); // dépendances : relance si l'une change
+  }, [categorie, recherche]); 
 
-  // -----------------------------------------------------
-  // Titre dynamique selon le contexte (catégorie, recherche, ou tous)
-  // -----------------------------------------------------
   let titre = 'Tous les artisans';
   if (categorie) titre = `Artisans - ${categorie}`;
   if (recherche) titre = `Résultats pour "${recherche}"`;
