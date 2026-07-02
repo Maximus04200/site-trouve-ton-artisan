@@ -37,76 +37,64 @@ function Accueil() {
   }, []);
 
   return (
-    <main>
-      <Helmet>
-  <title>Trouve ton artisan - Région Auvergne-Rhône-Alpes</title>
-  <meta name="description" content="Trouvez facilement un artisan de la région Auvergne-Rhône-Alpes. Bâtiment, Services, Fabrication, Alimentation." />
-</Helmet>
+  <main>
+    <Helmet>
+      <title>Trouve ton artisan - Région Auvergne-Rhône-Alpes</title>
+      <meta name="description" content="Trouvez facilement un artisan de la région Auvergne-Rhône-Alpes." />
+    </Helmet>
 
-      <section className="bg-light py-5">
-        <div className="container">
-          <h1 className="text-center mb-4">Comment trouver mon artisan ?</h1>
+   
+    <section className="hero-tta">
+      <div className="container">
+        <h1>Comment trouver mon artisan ?</h1>
+      </div>
+    </section>
 
-          <div className="row g-4">
-
-            <div className="col-12 col-md-3 text-center">
-              <div className="fs-1 fw-bold text-primary">1</div>
-              <p>Choisir la catégorie d'artisanat dans le menu.</p>
-            </div>
-
-            <div className="col-12 col-md-3 text-center">
-              <div className="fs-1 fw-bold text-primary">2</div>
-              <p>Choisir un artisan.</p>
-            </div>
-
-            <div className="col-12 col-md-3 text-center">
-              <div className="fs-1 fw-bold text-primary">3</div>
-              <p>Le contacter via le formulaire de contact.</p>
-            </div>
-
-            <div className="col-12 col-md-3 text-center">
-              <div className="fs-1 fw-bold text-primary">4</div>
-              <p>Une réponse sera apportée sous 48h.</p>
-            </div>
-
+    
+    <section className="etapes-section">
+      <div className="container">
+        <div className="row g-4 text-center">
+          <div className="col-12 col-md-3">
+            <div className="etape-numero">1</div>
+            <p className="etape-texte">Choisir la catégorie d'artisanat dans le menu.</p>
+          </div>
+          <div className="col-12 col-md-3">
+            <div className="etape-numero">2</div>
+            <p className="etape-texte">Choisir un artisan.</p>
+          </div>
+          <div className="col-12 col-md-3">
+            <div className="etape-numero">3</div>
+            <p className="etape-texte">Le contacter via le formulaire de contact.</p>
+          </div>
+          <div className="col-12 col-md-3">
+            <div className="etape-numero">4</div>
+            <p className="etape-texte">Une réponse sera apportée sous 48h.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="container py-5">
-        <h2 className="text-center mb-4">Les artisans du mois</h2>
-
-        {chargement && <p className="text-center">Chargement...</p>}
-
-        {!chargement && topArtisans.length === 0 && (
-          <p className="text-center text-muted">Aucun artisan du mois pour l'instant.</p>
-        )}
-
-        <div className="row g-4">
-          {topArtisans.map((artisan) => (
-            <div className="col-12 col-md-4" key={artisan.id_artisan}>
-              <Link
-                to={`/artisan/${artisan.id_artisan}`}
-                className="card h-100 text-decoration-none text-dark shadow-sm"
-              >
-                <div className="card-body">
-                  <h3 className="card-title h5">{artisan.nom}</h3>
-                  <Etoiles note={artisan.note} />
-                  <p className="card-text mt-2 mb-1">
-                    {artisan.specialite?.nom}
-                  </p>
-                  <p className="card-text text-muted small">
-                    Ville : {artisan.ville}
-                  </p>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </section>
-
-    </main>
-  );
+    <section className="container py-5">
+      <h2 className="section-titre text-center">Les artisans du mois</h2>
+      {chargement && <p className="text-center">Chargement...</p>}
+      {!chargement && topArtisans.length === 0 && (
+        <p className="text-center text-muted">Aucun artisan du mois pour l'instant.</p>
+      )}
+      <div className="row g-4">
+        {topArtisans.map((artisan) => (
+          <div className="col-12 col-md-4" key={artisan.id_artisan}>
+            <Link to={`/artisan/${artisan.id_artisan}`} className="artisan-card">
+              <p className="artisan-nom">{artisan.nom}</p>
+              <Etoiles note={artisan.note} />
+              <p className="artisan-specialite mt-2">{artisan.specialite?.nom}</p>
+              <p className="artisan-ville">Ville : {artisan.ville}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+);
 }
 
 export default Accueil;

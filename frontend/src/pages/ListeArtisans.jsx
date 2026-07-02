@@ -67,44 +67,34 @@ function ListeArtisans() {
   if (recherche) titre = `Résultats pour "${recherche}"`;
 
   return (
-    <main className="container py-5">
-      <Helmet>
-  <title>{titre} - Trouve ton artisan</title>
-  <meta name="description" content={`Liste des artisans ${categorie || recherche ? `- ${titre}` : 'de la région Auvergne-Rhône-Alpes'}`} />
-</Helmet>
-      <h1 className="mb-4">{titre}</h1>
+  <main className="container py-5">
+    <Helmet>
+      <title>{titre} - Trouve ton artisan</title>
+      <meta name="description" content={`Liste des artisans - ${titre}`} />
+    </Helmet>
 
-      {chargement && <p>Chargement...</p>}
+    <h1 className="section-titre">{titre}</h1>
 
-      {erreur && <p className="text-danger">{erreur}</p>}
+    {chargement && <p>Chargement...</p>}
+    {erreur && <p className="text-danger">{erreur}</p>}
+    {!chargement && !erreur && artisans.length === 0 && (
+      <p className="text-muted">Aucun artisan trouvé.</p>
+    )}
 
-      {!chargement && !erreur && artisans.length === 0 && (
-        <p className="text-muted">Aucun artisan trouvé.</p>
-      )}
-
-      <div className="row g-4">
-        {artisans.map((artisan) => (
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={artisan.id_artisan}>
-            <Link
-              to={`/artisan/${artisan.id_artisan}`}
-              className="card h-100 text-decoration-none text-dark shadow-sm"
-            >
-              <div className="card-body">
-                <h2 className="card-title h5">{artisan.nom}</h2>
-                <Etoiles note={artisan.note} />
-                <p className="card-text mt-2 mb-1">
-                  {artisan.specialite?.nom}
-                </p>
-                <p className="card-text text-muted small">
-                  Ville : {artisan.ville}
-                </p>
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </main>
-  );
+    <div className="row g-4">
+      {artisans.map((artisan) => (
+        <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={artisan.id_artisan}>
+          <Link to={`/artisan/${artisan.id_artisan}`} className="artisan-card">
+            <p className="artisan-nom">{artisan.nom}</p>
+            <Etoiles note={artisan.note} />
+            <p className="artisan-specialite mt-2">{artisan.specialite?.nom}</p>
+            <p className="artisan-ville">Ville : {artisan.ville}</p>
+          </Link>
+        </div>
+      ))}
+    </div>
+  </main>
+);
 }
 
 export default ListeArtisans;
