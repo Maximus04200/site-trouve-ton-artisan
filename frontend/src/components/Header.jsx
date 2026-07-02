@@ -28,47 +28,31 @@ function Header() {
   }
 
   return (
-    <header className="bg-white border-bottom shadow-sm">
-      <div className="container d-flex flex-wrap align-items-center justify-content-between py-3 gap-3">
-        <Link to="/" className="d-flex align-items-center text-decoration-none">
-          <img
-            src="/logo.png"
-            alt="Trouve ton artisan - Région Auvergne-Rhône-Alpes"
-            height="50"
-          />
-        </Link>
-
-        <nav>
-          <ul className="nav">
-            {categories.map((cat) => (
-              <li className="nav-item" key={cat.id_categorie}>
-                <button
-                  type="button"
-                  className="nav-link-custom btn btn-link nav-link"
-                  onClick={() => allerVersCategorie(cat.nom)}
-                >
-                  {cat.nom}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <form className="d-flex" role="search" onSubmit={gererRecherche}>
-          <input
-            type="search"
-            className="form-control"
-            placeholder="Rechercher un artisan..."
-            aria-label="Rechercher un artisan par nom"
-            value={recherche}
-            onChange={(e) => setRecherche(e.target.value)}
-          />
-          <button type="submit" className="btn btn-primary ms-2">
-            Rechercher
-          </button>
-        </form>
-      </div>
-    </header>
+    <header className="header-tta">
+  <div className="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+    <Link to="/" className="logo-tta">
+      <img src="/logo.png" alt="Trouve ton artisan - Région Auvergne-Rhône-Alpes" />
+    </Link>
+    <nav className="nav-menu">
+      <ul className="nav">
+        {categories.map((cat) => (
+          <li className="nav-item" key={cat.id_categorie}>
+            <button type="button" className="btn btn-link"
+              onClick={() => allerVersCategorie(cat.nom)}>
+              {cat.nom}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <form className="d-flex" role="search" onSubmit={gererRecherche}>
+      <input type="search" className="input-recherche" placeholder="Rechercher un artisan..."
+        aria-label="Rechercher un artisan" value={recherche}
+        onChange={(e) => setRecherche(e.target.value)} />
+      <button type="submit" className="btn-rechercher">Rechercher</button>
+    </form>
+  </div>
+</header>
   );
 }
 

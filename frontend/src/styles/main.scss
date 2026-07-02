@@ -1,21 +1,301 @@
 @use "./variables" as *;
 @use "../../node_modules/bootstrap/scss/bootstrap";
 
-html, body, #root {
-  min-height: 100vh;
-}
-
 body {
-  background-color: $tta-bleu-clair;
+  font-family: 'Graphik', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #ffffff;
   color: $tta-gris-fonce;
-  margin: 0;
 }
 
-.nav-link-custom {
-  color: $tta-gris-fonce;
-  text-decoration: none;
+.header-tta {
+  background-color: #ffffff;
+  border-bottom: 3px solid $tta-bleu-primaire;
+  padding: 12px 0;
 
-  &:hover {
-    color: $tta-bleu-primaire;
+  .logo-tta {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $tta-bleu-fonce;
+    text-decoration: none;
+
+    img { height: 45px; }
+  }
+
+  .nav-menu .btn-link {
+    color: $tta-gris-fonce;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: $tta-bleu-clair;
+      color: $tta-bleu-primaire;
+    }
+  }
+
+  .btn-rechercher {
+    background-color: $tta-bleu-primaire;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 18px;
+    font-weight: 600;
+
+    &:hover { background-color: $tta-bleu-fonce; }
+  }
+
+  .input-recherche {
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    padding: 8px 12px;
+    min-width: 220px;
   }
 }
+
+.hero-tta {
+  background-color: $tta-bleu-fonce;
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+}
+
+.etapes-section {
+  background-color: #ffffff;
+  padding: 50px 0;
+
+  .etape-numero {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $tta-bleu-primaire;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .etape-texte {
+    font-size: 0.95rem;
+    color: $tta-gris-fonce;
+  }
+}
+
+.artisan-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-decoration: none;
+  color: $tta-gris-fonce;
+  display: block;
+  height: 100%;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 116, 199, 0.15);
+    transform: translateY(-2px);
+    border-color: $tta-bleu-primaire;
+  }
+
+  .artisan-nom {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: $tta-bleu-fonce;
+    margin-bottom: 6px;
+  }
+
+  .artisan-specialite {
+    font-size: 0.85rem;
+    color: $tta-gris-fonce;
+    margin-bottom: 4px;
+  }
+
+  .artisan-ville {
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  .etoiles { color: #f5a623; font-size: 1rem; }
+}
+
+.section-titre {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $tta-bleu-fonce;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: $tta-bleu-primaire;
+    margin: 8px auto 0;
+  }
+}
+
+.fiche-hero {
+  background-color: $tta-bleu-fonce;
+  color: white;
+  padding: 40px 0;
+
+  h1 { font-size: 2rem; font-weight: 700; }
+  .badge-specialite {
+    background-color: $tta-bleu-primaire;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 8px;
+  }
+}
+
+.contact-form {
+  background: $tta-bleu-clair;
+  border-radius: 8px;
+  padding: 28px;
+
+  h2 {
+    color: $tta-bleu-fonce;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .btn-envoyer {
+    background-color: $tta-bleu-primaire;
+    color: white;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    width: 100%;
+
+    &:hover { background-color: $tta-bleu-fonce; }
+    &:disabled { opacity: 0.7; cursor: not-allowed; }
+  }
+}
+
+.page-404 {
+  text-align: center;
+  padding: 80px 20px;
+
+  .triangle-404 {
+    font-size: 5rem;
+    color: $tta-bleu-primaire;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: $tta-bleu-fonce;
+    margin-bottom: 14px;
+  }
+
+  p { color: $tta-gris-fonce; margin-bottom: 28px; }
+
+  .btn-retour {
+    background-color: $tta-bleu-primaire;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      background-color: $tta-bleu-fonce;
+      color: white;
+    }
+  }
+}
+
+.footer-tta {
+  background-color: $tta-bleu-fonce;
+  color: white;
+  padding: 40px 0 20px;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  address {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.8;
+
+    a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  }
+
+  .liens-legaux a {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    text-decoration: none;
+    display: block;
+    line-height: 1.9;
+
+    &:hover { color: white; text-decoration: underline; }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin-top: 24px;
+    padding-top: 16px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+  }
+}
+
+.filtres-tta {
+  background: $tta-bleu-clair;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  .filtre-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $tta-bleu-fonce;
+  }
+
+  .btn-filtre {
+    background: white;
+    border: 1px solid $tta-bleu-primaire;
+    color: $tta-bleu-primaire;
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover, &.actif {
+      background: $tta-bleu-primaire;
+      color: white;
+    }
+  }
+}
+
+.text-bleu { color: $tta-bleu-primaire; }
+.bg-bleu-fonce { background-color: $tta-bleu-fonce; }
+.bg-bleu-clair { background-color: $tta-bleu-clair; }
