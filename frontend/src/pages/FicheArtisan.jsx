@@ -124,10 +124,11 @@ function FicheArtisan() {
 
         
         <div className="col-12 col-md-6">
-          <div className="bg-light rounded d-flex align-items-center justify-content-center mb-4"
-               style={{ height: '200px' }}>
-            <span className="text-muted">Photo de l'artisan</span>
-          </div>
+          <img
+  src="/favicon.png"
+  alt={`Photo de ${artisan.nom}`}
+  className="img-fluid rounded mb-4"
+  style={{ maxHeight: '200px', objectFit: 'contain' }}/>
           <h2 className="h5 text-primary fw-bold">À propos</h2>
           <p>{artisan.apropos}</p>
           {artisan.site_web && (
