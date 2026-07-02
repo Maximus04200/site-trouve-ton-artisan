@@ -1,4 +1,4 @@
-
+import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import {
@@ -68,6 +68,10 @@ function ListeArtisans() {
 
   return (
     <main className="container py-5">
+      <Helmet>
+  <title>{titre} - Trouve ton artisan</title>
+  <meta name="description" content={`Liste des artisans ${categorie || recherche ? `- ${titre}` : 'de la région Auvergne-Rhône-Alpes'}`} />
+</Helmet>
       <h1 className="mb-4">{titre}</h1>
 
       {chargement && <p>Chargement...</p>}

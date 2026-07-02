@@ -1,5 +1,5 @@
 
-
+import { Helmet } from 'react-helmet-async';
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArtisanById, envoyerContact } from '../services/api';
@@ -102,8 +102,10 @@ function FicheArtisan() {
 
   return (
     <main className="container py-5">
-
-      
+ <Helmet>
+  <title>{artisan.nom} - Trouve ton artisan</title>
+  <meta name="description" content={`${artisan.nom}, ${artisan.specialite?.nom} à ${artisan.ville}. Contactez cet artisan via notre formulaire.`} />
+</Helmet>
       <div className="row g-4 mb-5">
 
         

@@ -1,19 +1,18 @@
-
-
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { getCategories } from '../services/api';
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getCategories } from "../services/api";
 
 function Header() {
- 
   const [categories, setCategories] = useState([]);
-  const [recherche, setRecherche] = useState('');
+  const [recherche, setRecherche] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     getCategories()
       .then((donnees) => setCategories(donnees))
-      .catch((erreur) => console.error('Erreur chargement catégories :', erreur));
+      .catch((erreur) =>
+        console.error("Erreur chargement catégories :", erreur),
+      );
   }, []);
 
   function allerVersCategorie(nomCategorie) {
@@ -21,9 +20,9 @@ function Header() {
   }
 
   function gererRecherche(e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
-    if (recherche.trim() === '') return; 
+    if (recherche.trim() === "") return;
 
     navigate(`/artisans?q=${encodeURIComponent(recherche)}`);
   }
@@ -31,13 +30,14 @@ function Header() {
   return (
     <header className="bg-white border-bottom shadow-sm">
       <div className="container d-flex flex-wrap align-items-center justify-content-between py-3 gap-3">
-
-        
         <Link to="/" className="d-flex align-items-center text-decoration-none">
-          <span className="fs-4 fw-bold text-primary">Trouve ton artisan</span>
+          <img
+            src="/logo.png"
+            alt="Trouve ton artisan - Région Auvergne-Rhône-Alpes"
+            height="50"
+          />
         </Link>
 
-        
         <nav>
           <ul className="nav">
             {categories.map((cat) => (
@@ -54,7 +54,6 @@ function Header() {
           </ul>
         </nav>
 
-        
         <form className="d-flex" role="search" onSubmit={gererRecherche}>
           <input
             type="search"
@@ -68,7 +67,6 @@ function Header() {
             Rechercher
           </button>
         </form>
-
       </div>
     </header>
   );

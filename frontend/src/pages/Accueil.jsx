@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getTopArtisans } from '../services/api';
+import { Helmet } from 'react-helmet-async';
 
 function Etoiles({ note }) {
   const noteArrondie = Math.round(note); 
@@ -37,6 +38,10 @@ function Accueil() {
 
   return (
     <main>
+      <Helmet>
+  <title>Trouve ton artisan - Région Auvergne-Rhône-Alpes</title>
+  <meta name="description" content="Trouvez facilement un artisan de la région Auvergne-Rhône-Alpes. Bâtiment, Services, Fabrication, Alimentation." />
+</Helmet>
 
       <section className="bg-light py-5">
         <div className="container">
