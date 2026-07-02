@@ -101,129 +101,93 @@ function FicheArtisan() {
   }
 
   return (
-    <main className="container py-5">
- <Helmet>
-  <title>{artisan.nom} - Trouve ton artisan</title>
-  <meta name="description" content={`${artisan.nom}, ${artisan.specialite?.nom} à ${artisan.ville}. Contactez cet artisan via notre formulaire.`} />
-</Helmet>
-      <div className="row g-4 mb-5">
+  <main>
+    <Helmet>
+      <title>{artisan.nom} - Trouve ton artisan</title>
+      <meta name="description" content={`${artisan.nom}, ${artisan.specialite?.nom} à ${artisan.ville}.`} />
+    </Helmet>
+
+    
+    <section className="fiche-hero">
+      <div className="container">
+        <h1>{artisan.nom}</h1>
+        <Etoiles note={artisan.note} />
+        <span className="badge-specialite">{artisan.specialite?.nom}</span>
+        <p className="mt-2 mb-0">
+          <small>Localisation : {artisan.ville}</small>
+        </p>
+      </div>
+    </section>
+
+    <div className="container py-5">
+      <div className="row g-5">
 
         
-        <div className="col-12 col-md-4">
-          <div className="bg-light rounded d-flex align-items-center justify-content-center"
-               style={{ height: '250px' }}>
+        <div className="col-12 col-md-6">
+          <div className="bg-light rounded d-flex align-items-center justify-content-center mb-4"
+               style={{ height: '200px' }}>
             <span className="text-muted">Photo de l'artisan</span>
           </div>
-        </div>
-
-        <div className="col-12 col-md-8">
-          <h1>{artisan.nom}</h1>
-          <Etoiles note={artisan.note} />
-          <p className="mt-2 mb-1">
-            <strong>Spécialité :</strong> {artisan.specialite?.nom}
-          </p>
-          <p className="mb-1">
-            <strong>Localisation :</strong> {artisan.ville}
-          </p>
-
+          <h2 className="h5 text-primary fw-bold">À propos</h2>
+          <p>{artisan.apropos}</p>
           {artisan.site_web && (
-            <p className="mb-3">
+            <p>
+              <strong>Site web :</strong>{' '}
               <a href={artisan.site_web} target="_blank" rel="noopener noreferrer">
-                Visiter le site web de l'artisan
+                {artisan.site_web}
               </a>
             </p>
           )}
-
-          <h2 className="h5 mt-4">À propos</h2>
-          <p>{artisan.apropos}</p>
         </div>
-      </div>
 
-      
-      <div className="row">
-        <div className="col-12 col-md-8 col-lg-6">
-          <h2 className="h4 mb-3">Contacter {artisan.nom}</h2>
+        
+        <div className="col-12 col-md-6">
+          <div className="contact-form">
+            <h2>Envoyer un mail à cet artisan</h2>
 
-          {messageSucces && (
-            <div className="alert alert-success" role="status">
-              {messageSucces}
-            </div>
-          )}
+            {messageSucces && (
+              <div className="alert alert-success">{messageSucces}</div>
+            )}
+            {erreursFormulaire.length > 0 && (
+              <div className="alert alert-danger">
+                <ul className="mb-0">
+                  {erreursFormulaire.map((msg, i) => <li key={i}>{msg}</li>)}
+                </ul>
+              </div>
+            )}
 
-          {erreursFormulaire.length > 0 && (
-            <div className="alert alert-danger" role="alert">
-              <ul className="mb-0">
-                {erreursFormulaire.map((msg, index) => (
-                  <li key={index}>{msg}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <form onSubmit={gererSoumission}>
-
-            <div className="mb-3">
-              <label htmlFor="nom" className="form-label">Nom</label>
-              <input
-                type="text"
-                className="form-control"
-                id="nom"
-                name="nom"
-                value={formulaire.nom}
-                onChange={gererChangement}
-                required
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="email" className="form-label">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                value={formulaire.email}
-                onChange={gererChangement}
-                required
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="objet" className="form-label">Objet</label>
-              <input
-                type="text"
-                className="form-control"
-                id="objet"
-                name="objet"
-                value={formulaire.objet}
-                onChange={gererChangement}
-                required
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="message" className="form-label">Message</label>
-              <textarea
-                className="form-control"
-                id="message"
-                name="message"
-                rows="5"
-                value={formulaire.message}
-                onChange={gererChangement}
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" className="btn btn-primary" disabled={envoiEnCours}>
-              {envoiEnCours ? 'Envoi en cours...' : 'Envoyer le message'}
-            </button>
-
-          </form>
+            <form onSubmit={gererSoumission}>
+              <div className="mb-3">
+                <label htmlFor="nom" className="form-label fw-semibold">Nom</label>
+                <input type="text" className="form-control" id="nom" name="nom"
+                  value={formulaire.nom} onChange={gererChangement} required />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label fw-semibold">Email</label>
+                <input type="email" className="form-control" id="email" name="email"
+                  value={formulaire.email} onChange={gererChangement} required />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="objet" className="form-label fw-semibold">Objet</label>
+                <input type="text" className="form-control" id="objet" name="objet"
+                  value={formulaire.objet} onChange={gererChangement} required />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="message" className="form-label fw-semibold">Message</label>
+                <textarea className="form-control" id="message" name="message"
+                  rows="4" value={formulaire.message} onChange={gererChangement} required />
+              </div>
+              <button type="submit" className="btn-envoyer" disabled={envoiEnCours}>
+                {envoiEnCours ? 'Envoi en cours...' : 'Envoyer'}
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
 
-    </main>
-  );
+      </div>
+    </div>
+  </main>
+);
 }
 
 export default FicheArtisan;
