@@ -55,6 +55,15 @@ app.use((req, res) => {
   res.status(404).json({ erreur: 'Route non trouvée' });
 });
 
+app.use((err, req, res, next) => {
+  console.error('Erreur non gérée :', err.message);
+
+  res.status(err.status || 500).json({
+    erreur: err.message === 'Origine non autorisée par CORS'
+      ? 'Accès refusé : origine non autorisée.'
+      : 'Une erreur interne est survenue.'
+  });
+});
 
 async function demarrerServeur() {
   try {
